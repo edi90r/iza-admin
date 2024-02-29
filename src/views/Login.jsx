@@ -119,7 +119,7 @@ const Login = () => {
                 )}
                 <div className='my-4 w-full border-b border-primary'></div>
 
-                <Link to={'/'} className='pt-2 font-hind font-700'>
+                <Link to={'https://e-iza.pl/login'} className='pt-2 font-hind font-700'>
                     powrót do strony głównej
                 </Link>
             </div>

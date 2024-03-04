@@ -6,7 +6,7 @@ import Button from '../components/Atoms/Button/Button';
 
 import { Link } from 'react-router-dom';
 
-const Login = () => {
+const ForgetPassword = () => {
     const [field, setField] = useState('');
     const { error, setError, passwordReset } = useAuth();
     const [successMessage, setSuccessMessage] = useState(null);
@@ -24,6 +24,7 @@ const Login = () => {
         }
         try {
             await passwordReset(field);
+
             setSuccessMessage(true);
             setField('');
             return;
@@ -72,4 +73,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default ForgetPassword;

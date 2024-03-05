@@ -17,6 +17,7 @@ import {
     EditUserSchema,
     ContactRequestNoteSchema,
 } from './formValidation';
+import { date } from 'joi';
 
 export const useProvideAuth = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -49,7 +50,7 @@ export const useProvideAuth = () => {
         await addDoc(collection(db, 'passwordResetRequests'), {
             email,
             role: 'admin',
-            timestamp: FieldValue.serverTimestamp(),
+            timestamp: new Date().toISOString(),
         });
     };
 

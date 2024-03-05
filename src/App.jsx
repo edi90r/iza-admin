@@ -23,10 +23,9 @@ import AuthActions from './authActions/AuthActions';
 const router = createBrowserRouter(
     createRoutesFromElements(
         <>
-            <Route path='/login' element={<Login />} />
             <Route path='/forget-password' element={<ForgetPassword />} />
             <Route path='/auth/action' element={<AuthActions />} />
-            <Route element={<ProtectedRoute role='admin' />}>
+            <Route element={<ProtectedRoute />}>
                 <Route path='/' element={<Layout />}>
                     <Route element={<Dashboard />} index />
                     <Route path='add-user' element={<UserFormView />}>
@@ -44,6 +43,7 @@ const router = createBrowserRouter(
                         </Route>
                     </Route>
                 </Route>
+                <Route path='/login' element={<Login />} />
             </Route>
         </>,
     ),

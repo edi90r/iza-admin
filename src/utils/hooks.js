@@ -7,7 +7,7 @@ import {
     sendPasswordResetEmail,
     confirmPasswordReset,
 } from 'firebase/auth';
-import { addDoc, collection, getDocs, query, where, FieldValue } from 'firebase/firestore';
+import { addDoc, collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../firebase';
 import {
     UserPersonalDataSchema,
@@ -17,7 +17,6 @@ import {
     EditUserSchema,
     ContactRequestNoteSchema,
 } from './formValidation';
-import { date } from 'joi';
 
 export const useProvideAuth = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);

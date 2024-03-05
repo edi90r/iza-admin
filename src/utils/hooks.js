@@ -7,7 +7,7 @@ import {
     sendPasswordResetEmail,
     confirmPasswordReset,
 } from 'firebase/auth';
-import { addDoc, collection, getDocs, query, where } from 'firebase/firestore';
+import { addDoc, collection, getDocs, query, where, FieldValue } from 'firebase/firestore';
 import { db } from '../firebase';
 import {
     UserPersonalDataSchema,
@@ -46,7 +46,11 @@ export const useProvideAuth = () => {
 
     const passwordReset = async (email) => {
         await sendPasswordResetEmail(auth, email);
-        await addDoc(collection(db, 'passwordResetRequests'), { email, role: 'admin' });
+        await addDoc(collection(db, 'passwordResetRequests'), {
+            email,
+            role: 'admin',
+            timestamp: FieldValue.serverTimestamp(),
+        });
     };
 
     const confirmThePasswordReset = async (oobCode, newPassword) => {

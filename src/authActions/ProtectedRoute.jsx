@@ -12,7 +12,7 @@ export const ProtectedRoute = ({ role }) => {
 
     useEffect(() => {
         let isMounted = true;
-        console.log(userRole);
+
         if ((!isAuthenticated || userRole !== role) && isMounted) {
             setIsLoading(false);
             navigate('/login');

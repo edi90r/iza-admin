@@ -8,11 +8,11 @@ import Loader from '../components/Atoms/Loader/Loader';
 export const ProtectedRoute = ({ role }) => {
     const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
-    const { isAuthenticated, userRole } = useAuth();
+    const { isAuthenticated, userRole, setError } = useAuth();
 
     useEffect(() => {
         let isMounted = true;
-
+        console.log(userRole);
         if ((!isAuthenticated || userRole !== role) && isMounted) {
             setIsLoading(false);
             navigate('/login');
@@ -22,7 +22,7 @@ export const ProtectedRoute = ({ role }) => {
         return () => {
             isMounted = false;
         };
-    }, [isAuthenticated, navigate, userRole, role, isLoading]);
+    }, [isAuthenticated, navigate, userRole, isLoading, role, setError]);
 
     return isLoading ? (
         <div className='fixed inset-0'>
